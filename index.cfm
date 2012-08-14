@@ -23,36 +23,6 @@ http://www.raymondcamden.com/index.cfm/2012/4/6/Face-detection-with-getUserMedia
 		</style>
 		
 		<script>
-		
-		//credit http://stackoverflow.com/a/8782422/52160
-		function dataURItoBlob(dataURI, callback) {
-				// convert base64 to raw binary data held in a string
-				// doesn't handle URLEncoded DataURIs
-		
-				var byteString;
-				if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-					byteString = atob(dataURI.split(',')[1]);
-				} else {
-					byteString = unescape(dataURI.split(',')[1]);
-				}
-		
-				// separate out the mime component
-				var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-		
-				// write the bytes of the string to an ArrayBuffer
-				var ab = new ArrayBuffer(byteString.length);
-				var ia = new Uint8Array(ab);
-				for (var i = 0; i < byteString.length; i++) {
-					ia[i] = byteString.charCodeAt(i);
-				}
-		
-				// write the ArrayBuffer to a blob, and you're done
-				var BlobBuilder = window.WebKitBlobBuilder || window.MozBlobBuilder;
-				var bb = new BlobBuilder();
-				bb.append(ab);
-				return bb.getBlob(mimeString);
-		}
-		
 		function errorHandler(e) {
 			console.log("Error");
 			console.dir(e);
@@ -92,13 +62,12 @@ http://www.raymondcamden.com/index.cfm/2012/4/6/Face-detection-with-getUserMedia
 					canvas.width = video.videoWidth;
 					canvas.height = video.videoHeight;
 					canvas.getContext('2d').drawImage(video, 0, 0);
-		
+							
 					var data = canvas.toDataURL('image/jpeg', 1.0);
-					newblob = dataURItoBlob(data);
 		
 					var formdata = new FormData();
 					formdata.append("filename","temp.jpg");
-					formdata.append("file",newblob); 
+					formdata.append("file",data); 
 		
 					 $.ajax({
 						 url: 'http://amerimarkjobs.dev/testcode/file.cfc?method=updateProduct',
