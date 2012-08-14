@@ -98,7 +98,6 @@ http://www.raymondcamden.com/index.cfm/2012/4/6/Face-detection-with-getUserMedia
 		
 					var formdata = new FormData();
 					formdata.append("filename","temp.jpg");
-				 
 					formdata.append("file",newblob); 
 		
 					 $.ajax({
