@@ -70,7 +70,7 @@ http://www.raymondcamden.com/index.cfm/2012/4/6/Face-detection-with-getUserMedia
 					formdata.append("file",data); 
 		
 					 $.ajax({
-						 url: 'http://amerimarkjobs.dev/testcode/file.cfc?method=updateProduct',
+						 url: 'http://#CGI.SERVER_NAME#/file.cfc?method=updateProduct',
 						 data: formdata,
 						 cache: false,
 						 contentType: false,
