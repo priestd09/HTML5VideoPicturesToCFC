@@ -14,3 +14,10 @@ CFC.  A CFM file will work just the same if you want to put the CF code on a CFM
 
 The CFC then returns the name of the image that was written to the server.
 
+Update 8/17/2012
+One thing i also noticed is the JPG images are very large, about 200K.  
+
+In production i used Efflare's ImageCR to re-save the JPG and it brought it down to a much more appropriate 30K.
+
+CFImage will probably clean it up also, but i like ImageCR better.
+
